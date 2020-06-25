@@ -55,7 +55,7 @@ function setAction(event) {
   var targetedLink = event.target;
   targetedLink.classList.add('active');
   if (targetedLink.className == 'active') {
-    showPage(listItems, ?);
+    showPage(listItems, targetedLink.textContent);
   }
 }
 
