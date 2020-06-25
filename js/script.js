@@ -29,7 +29,7 @@ function appendPageLinks (list) {
   div.className = 'pagination';
   mainDiv.appendChild(div);
   div.appendChild(ul);
-  for (let i = 1; i < listItems.length/10; i++) {
+  for (let i = 1; i < list.length/10; i++) {
     if (i > 0) {
       const li = document.createElement('li');
       ul.appendChild(li);
@@ -38,24 +38,30 @@ function appendPageLinks (list) {
       a.href = '#';
       a.textContent = i;
       ul.firstElementChild.firstElementChild.className = 'active';
-      for (let i = 0; i < a.length; i++) {
-        a[i].classList.remove('active');
-        console.log(a);
-      }
     }
   }
 }
 
-appendPageLinks();
+
+showPage(listItems, 1);
+appendPageLinks(listItems);
+const links = document.querySelectorAll('a');
 
 
-/*** 
-   Create the `appendPageLinks function` to generate, append, and add 
-   functionality to the pagination buttons.
-***/
+function setAction(event) {
+  for (let i = 0; i < links.length; i++) {
+    links[i].classList.remove('active');
+  }
+  var targetedLink = event.target;
+  targetedLink.classList.add('active');
+  if (targetedLink.className == 'active') {
+    showPage(listItems, ?);
+  }
+}
 
 
-
-
-
-// Remember to delete the comments that came with this file, and replace them with your own code comments.
+for (let i = 0; i < links.length; i++) {
+  links[i].addEventListener ('click', (event) => {
+    setAction(event);
+  });
+}
