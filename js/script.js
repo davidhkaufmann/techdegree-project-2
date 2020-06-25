@@ -9,7 +9,7 @@ const listItems = document.querySelectorAll('.student-item');
 const perPage = 10;
 
 
-function showPage (list, page) {
+function showPage (page) {
   const startIndex = (page * perPage) - perPage;
   const endIndex = page * perPage;
   for (let i = 0; i < listItems.length; i++) {
@@ -22,14 +22,14 @@ function showPage (list, page) {
 }
 
 
-function appendPageLinks (list) {
+function appendPageLinks () {
   const mainDiv = document.querySelector('.page')
   const div = document.createElement('div');
   const ul = document.createElement('ul');
   div.className = 'pagination';
   mainDiv.appendChild(div);
   div.appendChild(ul);
-  for (let i = 1; i < list.length/10; i++) {
+  for (let i = 0; i < listItems.length/8; i++) {
     if (i > 0) {
       const li = document.createElement('li');
       ul.appendChild(li);
@@ -43,8 +43,8 @@ function appendPageLinks (list) {
 }
 
 
-showPage(listItems, 1);
-appendPageLinks(listItems);
+showPage(1);
+appendPageLinks();
 const links = document.querySelectorAll('a');
 
 
@@ -55,7 +55,7 @@ function setAction(event) {
   var targetedLink = event.target;
   targetedLink.classList.add('active');
   if (targetedLink.className == 'active') {
-    showPage(listItems, targetedLink.textContent);
+    showPage(targetedLink.textContent);
   }
 }
 
