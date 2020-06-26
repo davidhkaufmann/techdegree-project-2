@@ -17,7 +17,7 @@ div.style.display = 'inline';
 div.style.float = 'right';
 header.appendChild(div);
 const input = document.createElement('input');
-input.keyup = 'myFunction()';
+input.keyup = filterNames();
 input.placeholder = 'Search for students...';
 const button = document.createElement('button');
 button.textContent = 'Search';
