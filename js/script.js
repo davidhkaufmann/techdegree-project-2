@@ -9,6 +9,39 @@ const list = document.querySelectorAll('.student-item');
 const perPage = 10;
 
 
+// Created a search bar.
+
+const header = document.querySelector('.page-header');
+const div = document.createElement('div');
+div.style.display = 'inline';
+div.style.float = 'right';
+header.appendChild(div);
+const input = document.createElement('input');
+input.keyup = 'myFunction()';
+input.placeholder = 'Search for students...';
+const button = document.createElement('button');
+button.textContent = 'Search';
+div.appendChild(input);
+div.appendChild(button);
+
+
+function filterNames() {
+  const filter = input.value.toUpperCase();
+  const ul = document.querySelector('.student-list');
+  const li = document.querySelectorAll('.student-item');
+  for (i = 0; i < li.length; i++) {
+    const names = document.querySelectorAll('h3')[0];
+    const text = names.textContent;
+    if (text.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = 'block';
+    } else {
+      li[i].style.display = 'none';
+    }
+  }
+}
+
+filterNames();
+
 /*
 Declaring the showPage function which includes the following:
   1. Determine the first and last list items for each page (startIndex and endIndex).
@@ -61,7 +94,7 @@ function appendPageLinks (list) {
 
 
 /*
-Called the showPage function with a page parameter of 1 so that when the page loads it shows the first 10 students.
+Called the showPage function with a page parameter of 1 so when the page loads it shows the first 10 students.
 Called the appendPageLinks function to show the pagination links at the bottom of the page.
 Declare a links variable which includes all the link tags.
 */
