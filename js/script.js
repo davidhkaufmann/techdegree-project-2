@@ -53,15 +53,15 @@ function appendPageLinks (arr) {
     }
   }
 
-  pagUl.addEventListener('click', (e) => {
+  pagUl.addEventListener('click', (event) => {
     const link = document.querySelectorAll('a');
-    if (e.target.tagName === 'A') {
+    if (event.target.tagName === 'A') {
       for (let i = 0; i < link.length; i++) {
         const links = link[i];
         links.className = 'none';
       }
-      e.target.className = 'active';
-      showPage(list, e.target.textContent);
+      event.target.className = 'active';
+      showPage(list, event.target.textContent);
     }
   })
 
